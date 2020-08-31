@@ -24,7 +24,9 @@ public class HomeController {
         }
         return "gif-details";
     }
+
 }
+
 // @PathVariable zamienia automatycznie ze ścieżki, która się zmienia
 // /gif/mike  -> String name = "mike"
 // na zmienną Javową o nazwie name

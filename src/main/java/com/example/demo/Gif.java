@@ -6,10 +6,11 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-//@AllArgsConstructor
+@AllArgsConstructor
 @Data // lombok
 public class Gif {
 
+    private boolean favorite;
     private String name;
     public String getFilePath (){
         return "/gifs/"+name+".gif";
@@ -17,6 +18,11 @@ public class Gif {
 
     public String getName() {
         return name;
+    }
+
+    public Gif( String name, boolean favorite) {
+        this.name = name;
+        this.favorite = favorite;
     }
 
     public Gif(String name) {
@@ -30,12 +36,12 @@ public class Gif {
     // to musimy użyć bloku statycznego
 
     static {
-        GIFS.add(new Gif("android-explosion"));
-        GIFS.add(new Gif("ben-and-mike"));
-        GIFS.add(new Gif("book-dominos"));
-        GIFS.add(new Gif("compiler-bot"));
-        GIFS.add(new Gif("cowboy-coder"));
-        GIFS.add(new Gif("infinite-andrew"));
+        GIFS.add(new Gif("android-explosion",true));
+        GIFS.add(new Gif("ben-and-mike",false));
+        GIFS.add(new Gif("book-dominos",true));
+        GIFS.add(new Gif("compiler-bot", false));
+        GIFS.add(new Gif("cowboy-coder", true));
+        GIFS.add(new Gif("infinite-andrew",true));
 
      // to powyżej, to jest taka nasza baza danych, bez bazy danych
 

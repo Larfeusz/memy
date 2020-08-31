@@ -51,13 +51,11 @@
             <div th:each="gif : ${gifs}" class="col s12 l4">
                 <a th:href="@{|/gif/${gif.name}|}">
                     <img th:src="@{|/gifs/${gif.name}.gif|}" />
-<!--                    <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>-->
+                    <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
                 </a>
             </div>
         </div>
     </div>
-<h1>D</h1>
-    <p>jDDODODODODOODODd</p>
 <script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>
 <script th:src="@{/vendor/materialize/js/materialize.js}"></script>
 <script th:src="@{/app.js}"></script>
