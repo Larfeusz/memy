@@ -6,13 +6,17 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+//@AllArgsConstructor
 @Data // lombok
- // Konstruktor dwuargumentowy
 public class Gif {
 
     private String name;
     public String getFilePath (){
         return "/gifs/"+name+".gif";
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Gif(String name) {
