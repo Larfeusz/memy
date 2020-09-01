@@ -11,6 +11,11 @@ import java.util.List;
 public class Gif {
 
     private boolean favorite;
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
     private String name;
     public String getFilePath (){
         return "/gifs/"+name+".gif";

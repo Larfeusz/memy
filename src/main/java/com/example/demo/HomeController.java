@@ -1,9 +1,12 @@
 package com.example.demo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
@@ -24,6 +27,13 @@ public class HomeController {
         }
         return "gif-details";
     }
+    @GetMapping("/favorites")
+    public String getFavorites(ModelMap map){
+        map.put("gifs",Gif.GIFS.stream().filter(gif -> gif.isFavorite())
+                .collect(Collectors.toList()));
+        return "favorites";
+    }
+
 
 }
 
