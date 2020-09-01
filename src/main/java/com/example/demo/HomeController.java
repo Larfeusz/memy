@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,14 +63,22 @@ public class HomeController {
         map.put("gifs",gifs);
         return "category";
     }
+    // @RequestParam -> oznacza, że paraetr będzie wysłany do adresu url o nazwie "name"
+    // /gifs/search?name=ben
 
+    @GetMapping("/gifs/search")
+    public String searchGifs (@RequestParam String name, ModelMap map){
 
-
-
-
+        List<Gif> gifs = new ArrayList<>();
+        for (Gif gif : Gif.GIFS){
+            if ( gif.getName().contains(name)){
+                gifs.add(gif);
+            }
+        }
+        map.put("gifs", gifs);
+        return "home";
+    }
 }
-
-
 
 
 
