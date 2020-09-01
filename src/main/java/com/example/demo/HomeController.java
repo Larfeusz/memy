@@ -6,6 +6,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -27,6 +29,7 @@ public class HomeController {
         }
         return "gif-details";
     }
+
     @GetMapping("/favorites")
     public String getFavorites(ModelMap map){
         map.put("gifs",Gif.GIFS.stream().filter(gif -> gif.isFavorite())
@@ -34,8 +37,41 @@ public class HomeController {
         return "favorites";
     }
 
+    @GetMapping("/categories")
+    public String getCategories(ModelMap map){
+        map.put("categories",Category.categoryList);
+        return "categories";
+    }
+
+    @GetMapping("/category/{name}")
+    public String getCategory(@PathVariable String name, ModelMap map){
+        Category category = null;
+        for (Category category1: Category.categoryList){
+            if (category1.getName().equals(name)){
+                category = category1;
+            }
+        }
+        map.put("category",category);
+
+        List<Gif> gifs = new ArrayList<>();
+            for ( Gif gif : Gif.GIFS ) {
+            if (gif.getCategory().getName().equals(name)){
+                gifs.add(gif);
+            }
+        }
+        map.put("gifs",gifs);
+        return "category";
+    }
+
+
+
+
 
 }
+
+
+
+
 
 // @PathVariable zamienia automatycznie ze ścieżki, która się zmienia
 // /gif/mike  -> String name = "mike"
